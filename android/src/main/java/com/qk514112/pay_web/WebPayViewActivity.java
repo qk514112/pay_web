@@ -145,7 +145,6 @@ public class WebPayViewActivity extends AppCompatActivity {
 
             }
 
-
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 //Logger.d("loading url=" + url);
@@ -155,32 +154,6 @@ public class WebPayViewActivity extends AppCompatActivity {
             }
         });
         if (url != null && url.contains("orders/easypaisa")) {
-//            webView.postUrl(url, URLEncoder.encode(my_username, "UTF-8") );
-            //Logger.d("webView.postUrl: =" + url + " postValue:" + postValue);
-        /*    String value111 = null;
-            JSONArray array =new JSONArray();
-            JSONObject object =new JSONObject();
-            JSONObject obj= new JSONObject();
-            try {
-               *//* object.put("userId",2099955);
-                object.put("money",1000);
-                object.put("currency","PKR");
-                object.put("channel","MA");
-                object.put("country","country");
-                array.put(object);*//*
-                obj.put("userId",2099955);
-                obj.put("money",1000);
-                obj.put("currency","PKR");
-                obj.put("channel","MA");
-                obj.put("country","PK");
-                obj.put("msisdn","13265897485");
-                obj.put("mobileAccountNo","13265897485");
-                obj.put("email","");
-                value111 = obj.toString();
-                //Logger.d("EP value2222:"+value111);*/
-//                &mobileAccountNo=${accountNumberController.text}&email=
-
-//            webView.postUrl(url, value111.getBytes());
             postURL(url, postValue);
         } else {
             webView.loadUrl(url);
@@ -222,32 +195,6 @@ public class WebPayViewActivity extends AppCompatActivity {
             }
         });
     }
-
-
-   /* public boolean shouldOverrideLoading(String url) {
-        //Logger.d("~~~!!url: shouldOverrideLoading url:" + url);
-        if (url != null && (url.startsWith("gojek://") || url.startsWith("shopeeid://") || url.startsWith("market://")|| url.startsWith("sms:"))) {
-            startUrl(getApplicationContext(), url, false);
-            return true;
-        }
-        return false;
-    }
-
-    public void startUrl(Context context, String url, boolean isNewTask) {
-        if (context != null && !TextUtils.isEmpty(url)) {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                if (isNewTask) {
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                }
-                context.startActivity(intent);
-
-            } catch (Exception e) {
-                //Logger.d("loading startUrl=" + e.getMessage());
-            }
-        }
-    }*/
-
 
     //Back button on Actionbar
     @Override
@@ -292,37 +239,6 @@ public class WebPayViewActivity extends AppCompatActivity {
             showNormalDialog(msg);
         }*/
     }
-
-    /*private void showNormalDialog(String msg){
-     *//* @setIcon 设置对话框图标
-     * @setTitle 设置对话框标题
-     * @setMessage 设置对话框消息提示
-     * setXXX方法返回Dialog对象，因此可以链式设置属性
-     *//*
-        if(msg == null){
-            msg = "没有数据";
-        }
-        final AlertDialog.Builder normalDialog =
-                new AlertDialog.Builder(WebPayViewActivity.this);
-        normalDialog.setTitle(msg);
-        normalDialog.setMessage("你要点击哪一个按钮呢?");
-        normalDialog.setPositiveButton("确定",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //...To-do
-                    }
-                });
-        normalDialog.setNegativeButton("关闭",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //...To-do
-                    }
-                });
-        // 显示
-        normalDialog.show();
-    }*/
 
     /**
      * Parse the url and open it by system function.
