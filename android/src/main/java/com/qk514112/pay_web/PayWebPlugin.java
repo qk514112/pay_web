@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.Map;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
@@ -46,7 +48,14 @@ public class PayWebPlugin implements FlutterPlugin,
         if (call.method.equals("getPlatformVersion")) {
             result.success("Android " + android.os.Build.VERSION.RELEASE);
         } else if (call.method.equals("openWebPayView")) {
+            String url = call.argument("url");
+            String title = call.argument("title");
+            String postValue = call.argument("postValue");
+
             Intent intent = new Intent(context, WebPayViewActivity.class);
+            intent.putExtra("url",url);
+            intent.putExtra("title",title);
+            intent.putExtra("postValue",postValue);
             activity.startActivity(intent);
         } else {
             result.notImplemented();

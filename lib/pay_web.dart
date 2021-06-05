@@ -11,7 +11,12 @@ class PayWeb {
   }
 
   /// 打开支付网页
-  static Future<void> get openWebPayView async {
-    await _channel.invokeMethod('openWebPayView');
+  static Future<void> openWebPayView(String url, String title, String postValue) async {
+    final params = {
+      'url': url,
+      'title': title,
+      'postValue': postValue,
+    };
+    await _channel.invokeMethod('openWebPayView', params);
   }
 }

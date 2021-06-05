@@ -3,7 +3,10 @@
    <application
         android:label="pay_web_example"
         android:icon="@mipmap/ic_launcher">
-        <activity
+
+       <activity android:name=".WebPayViewActivity" />
+
+       <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

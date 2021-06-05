@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
+<!--   <TextView
+       android:text="1234455"
+       android:textColor="@color/Black"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       tools:ignore="MissingConstraints" />-->
   <!--  <com.streamkar.ui.helper.BaseStatusBar
         android:id="@+id/base_status_bar"
         android:layout_width="match_parent"
@@ -21,16 +24,17 @@
     <TextView
         android:id="@+id/payment_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="#D251F9"
         android:textColor="@color/white"
+        tools:ignore="MissingConstraints"
       />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/framL"
-        android:layout_below="@id/payment_toolbar">
+        android:layout_below="@id/payment_toolbar"
+        tools:ignore="UnknownId">
 
         <WebView
             android:id="@+id/webview_wv"
@@ -106,4 +110,4 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:visibility="gone" />-->
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

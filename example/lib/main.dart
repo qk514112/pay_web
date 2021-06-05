@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
             ),
             TextButton(
               onPressed: () {
-                PayWeb.openWebPayView;
+                PayWeb.openWebPayView('https://www.zhipin.com/', 'zhi pin', 'zhi pin value');
                 print('clicked openWebPayView btn');
               },
               child: Text('openWebPayView'),

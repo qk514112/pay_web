@@ -8,6 +8,7 @@
 package com.qk514112.pay_web;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -50,13 +52,13 @@ import okhttp3.Response;
  * 修改时间：927
  * paypal支付的Web界面
  */
-public class WebPayViewActivity extends AppCompatActivity {
+public class WebPayViewActivity extends Activity {
     public final static String URL = "url";
     public final static String Title = "title";
     public final static String PostValue = "postValue";
     WebView webView;
     ProgressBar progressBar;
-    TextView mToolbar;
+//    TextView mToolbar;
     private String url;
     private String title;
     private String postValue;
@@ -67,11 +69,12 @@ public class WebPayViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("WebPayViewActivity", "WebPayViewActivity: --------------------");
         setContentView(R.layout.ty_setting_webview);
 
         webView = findViewById(R.id.webview_wv);
         progressBar = findViewById(R.id.webview_pb);
-        mToolbar = findViewById(R.id.payment_toolbar);
+//        mToolbar = findViewById(R.id.payment_toolbar);
 
         url = getIntent().getStringExtra(URL);
         title = getIntent().getStringExtra(Title);
@@ -81,12 +84,12 @@ public class WebPayViewActivity extends AppCompatActivity {
         if (title == null) {
             title = getString(R.string.payment);
         }
-        mToolbar.setText(title);
+//        mToolbar.setText(title);
 //        setSupportActionBar(mToolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //change direction of back arrow
         Drawable backArrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
-        getSupportActionBar().setHomeAsUpIndicator(backArrow);
+        getActionBar().setHomeAsUpIndicator(backArrow);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setSupportZoom(true);
