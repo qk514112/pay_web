@@ -207,39 +207,6 @@ public class WebPayViewActivity extends AppCompatActivity {
         return true;
     }
 
-    public class JsObject {
-        @JavascriptInterface
-        public void paySuccess() {
-            setResult(RESULT_OK);
-            finish();
-        }
-
-        @JavascriptInterface
-        public String getJsessionId() {
-//            //Logger.d("getJsessionId=" + SPUtil.getJsessionId(getApplicationContext()));
-//            showNormalDialog(null);
-            return "getJsessionId_error";
-        }
-
-        // 支付失败跳至失败界面
-        @JavascriptInterface
-        public void payFail(String errorMsg) {
-            finish();
-        }
-
-        @JavascriptInterface
-        public void payComplete() {
-            //Logger.d("-------------------payComplete");
-            finish();
-        }
-
-      /*  @JavascriptInterface
-        public void payDialog(String msg) {
-            //Logger.d("-------------------payDialog:"+msg);
-            showNormalDialog(msg);
-        }*/
-    }
-
     /**
      * Parse the url and open it by system function.
      * case 1: deal "intent://xxxx" url.
@@ -285,5 +252,38 @@ public class WebPayViewActivity extends AppCompatActivity {
         }
 
         return false;
+    }
+
+    public class JsObject {
+        @JavascriptInterface
+        public void paySuccess() {
+            setResult(RESULT_OK);
+            finish();
+        }
+
+        @JavascriptInterface
+        public String getJsessionId() {
+//            //Logger.d("getJsessionId=" + SPUtil.getJsessionId(getApplicationContext()));
+//            showNormalDialog(null);
+            return "getJsessionId_error";
+        }
+
+        // 支付失败跳至失败界面
+        @JavascriptInterface
+        public void payFail(String errorMsg) {
+            finish();
+        }
+
+        @JavascriptInterface
+        public void payComplete() {
+            //Logger.d("-------------------payComplete");
+            finish();
+        }
+
+      /*  @JavascriptInterface
+        public void payDialog(String msg) {
+            //Logger.d("-------------------payDialog:"+msg);
+            showNormalDialog(msg);
+        }*/
     }
 }
