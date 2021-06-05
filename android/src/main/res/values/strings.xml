@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="facebook_app_id" translatable="false">2062065874036219</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2062065874036219</string>
+
+    <string name="app_name">OyeTalk</string>
+    <string name="payment">OyeTalk Payment</string>
+    <string name="common_ok">OK</string>
+</resources>

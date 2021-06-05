@@ -1,3 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.qk514112.pay_web">
+    <application>
+    <activity android:name=".WebPayViewActivity"></activity>
+    </application>
 </manifest>

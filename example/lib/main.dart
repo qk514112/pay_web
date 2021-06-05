@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pay_web/pay_web.dart';
 
@@ -28,8 +28,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await PayWeb.platformVersion ?? 'Unknown platform version';
+      platformVersion = await PayWeb.platformVersion ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -51,8 +50,19 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: [
+            Center(
+              child: Text('Running on: $_platformVersion\n'),
+            ),
+            TextButton(
+              onPressed: () {
+                PayWeb.openWebPayView;
+                print('clicked openWebPayView btn');
+              },
+              child: Text('openWebPayView'),
+            ),
+          ],
         ),
       ),
     );
