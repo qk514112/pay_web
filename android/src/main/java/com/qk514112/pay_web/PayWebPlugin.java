@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-
-import java.util.Map;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -27,14 +24,17 @@ public class PayWebPlugin implements FlutterPlugin,
         ActivityAware,
         PluginRegistry.RequestPermissionsResultListener,
         PluginRegistry.ActivityResultListener {
+    /// 打印日志时用到
+    final String TAG = "PayWebPlugin";
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private MethodChannel channel;
+    /// 插件关联的 activity
     private Activity activity;
+    /// 插件关联的上下文
     private Context context;
-    final String TAG = "PayWebPlugin";
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -48,14 +48,16 @@ public class PayWebPlugin implements FlutterPlugin,
         if (call.method.equals("getPlatformVersion")) {
             result.success("Android " + android.os.Build.VERSION.RELEASE);
         } else if (call.method.equals("openWebPayView")) {
+            // 解析从 flutter 传过来的参数
             String url = call.argument("url");
             String title = call.argument("title");
             String postValue = call.argument("postValue");
 
+            // 打开网页
             Intent intent = new Intent(context, WebPayViewActivity.class);
-            intent.putExtra("url",url);
-            intent.putExtra("title",title);
-            intent.putExtra("postValue",postValue);
+            intent.putExtra("url", url);
+            intent.putExtra("title", title);
+            intent.putExtra("postValue", postValue);
             activity.startActivity(intent);
         } else {
             result.notImplemented();
@@ -104,11 +106,13 @@ public class PayWebPlugin implements FlutterPlugin,
 
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO: 测试代码
+        // 测试有返回结果的 activity 跳转
 //        if (requestCode == REQUEST_CODE_OPEN && resultCode == RESULT_OK) {
 //            Toast.makeText(activity, "adfadfadfasdfas", Toast.LENGTH_LONG).show();
 //            return  true;
 //        }
-        Toast.makeText(activity, "" + resultCode, Toast.LENGTH_LONG).show();
+//        Toast.makeText(activity, "" + resultCode, Toast.LENGTH_LONG).show();
         Log.d(TAG, "onActivityResult" + resultCode);
         return false;
     }

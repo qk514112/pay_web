@@ -11,6 +11,9 @@ class PayWeb {
   }
 
   /// 打开支付网页
+  /// [url] 网页地址
+  /// [title] 网页标题
+  /// [postValue] 其他参数
   static Future<void> openWebPayView(String url, String title, String postValue) async {
     final params = {
       'url': url,

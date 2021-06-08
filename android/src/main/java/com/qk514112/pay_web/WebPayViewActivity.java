@@ -56,6 +56,8 @@ public class WebPayViewActivity extends Activity {
     public final static String URL = "url";
     public final static String Title = "title";
     public final static String PostValue = "postValue";
+    private final String Tag = "WebPayViewActivity";
+
     WebView webView;
     ProgressBar progressBar;
 //    TextView mToolbar;
@@ -79,6 +81,7 @@ public class WebPayViewActivity extends Activity {
         url = getIntent().getStringExtra(URL);
         title = getIntent().getStringExtra(Title);
         postValue = getIntent().getStringExtra(PostValue);
+        Log.d(Tag, "===web pay" + url);
         //Logger.e("~~~!!url:" + url + "       /title:" + title + "/postValue" + postValue);
 //        Log.d("~~~!!title",title);
         if (title == null) {
